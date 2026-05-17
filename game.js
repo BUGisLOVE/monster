@@ -89,17 +89,206 @@ const terrainRegions = [
   },
 ];
 
-const dragonPalette = {
-  outline: "#6079b7",
-  bodyLight: "#fbffff",
-  bodyMid: "#c9f6ec",
-  bodyDeep: "#9fa9ff",
-  belly: "#fff1bd",
-  wingA: "rgba(128, 231, 244, 0.88)",
-  wingB: "rgba(184, 151, 255, 0.82)",
-  horn: "#fff2a9",
-  crystal: "#9ff5ff",
-  ember: "#ffce73",
+const dragonColorThemes = [
+  {
+    name: "오팔",
+    outline: "#6079b7",
+    bodyLight: "#fbffff",
+    bodyMid: "#c9f6ec",
+    bodyDeep: "#9fa9ff",
+    bodyShadow: "#7d77d9",
+    belly: "#fff1bd",
+    wingA: "rgba(128, 231, 244, 0.88)",
+    wingB: "rgba(184, 151, 255, 0.82)",
+    tailTip: "rgba(185, 151, 255, 0.82)",
+    horn: "#fff2a9",
+    crystal: "#9ff5ff",
+    eye: "#ffe48d",
+    auraMid: "126, 231, 244",
+    auraEdge: "184, 151, 255",
+    spots: ["#fff7bd", "#bffcff", "#d8c8ff", "#fff7bd", "#bffcff"],
+  },
+  {
+    name: "루비",
+    outline: "#8b3d65",
+    bodyLight: "#fff0f3",
+    bodyMid: "#ff9cb3",
+    bodyDeep: "#b7386d",
+    bodyShadow: "#74337f",
+    belly: "#ffd7a8",
+    wingA: "rgba(255, 126, 148, 0.88)",
+    wingB: "rgba(255, 198, 110, 0.82)",
+    tailTip: "rgba(255, 110, 126, 0.84)",
+    horn: "#ffe1a3",
+    crystal: "#ff86c0",
+    eye: "#ffe86f",
+    auraMid: "255, 126, 148",
+    auraEdge: "255, 198, 110",
+    spots: ["#ffe1a3", "#ffbfd1", "#ffc46f", "#fff1bd", "#ff9dc6"],
+  },
+  {
+    name: "사파이어",
+    outline: "#365c9f",
+    bodyLight: "#eff9ff",
+    bodyMid: "#77c8ff",
+    bodyDeep: "#486ee2",
+    bodyShadow: "#3942a6",
+    belly: "#d7f6ff",
+    wingA: "rgba(96, 200, 255, 0.88)",
+    wingB: "rgba(100, 124, 255, 0.82)",
+    tailTip: "rgba(98, 175, 255, 0.84)",
+    horn: "#ecfbff",
+    crystal: "#7ee8ff",
+    eye: "#fff4a4",
+    auraMid: "96, 200, 255",
+    auraEdge: "100, 124, 255",
+    spots: ["#d7f6ff", "#8df1ff", "#aebfff", "#fff4a4", "#77c8ff"],
+  },
+  {
+    name: "에메랄드",
+    outline: "#2f806f",
+    bodyLight: "#f0fff8",
+    bodyMid: "#76e0ad",
+    bodyDeep: "#2ca36e",
+    bodyShadow: "#236b79",
+    belly: "#f6ffc8",
+    wingA: "rgba(104, 231, 185, 0.88)",
+    wingB: "rgba(134, 214, 116, 0.82)",
+    tailTip: "rgba(80, 220, 160, 0.84)",
+    horn: "#fff2a9",
+    crystal: "#8bffd8",
+    eye: "#ffef7a",
+    auraMid: "104, 231, 185",
+    auraEdge: "134, 214, 116",
+    spots: ["#fff2a9", "#b4ffd8", "#8ff0ab", "#e8ffbd", "#86f4cb"],
+  },
+  {
+    name: "자수정",
+    outline: "#6a55a5",
+    bodyLight: "#fff4ff",
+    bodyMid: "#d39cff",
+    bodyDeep: "#8756dd",
+    bodyShadow: "#553c9f",
+    belly: "#ffe8c7",
+    wingA: "rgba(211, 156, 255, 0.88)",
+    wingB: "rgba(112, 221, 255, 0.82)",
+    tailTip: "rgba(194, 130, 255, 0.84)",
+    horn: "#fff0b8",
+    crystal: "#d7a4ff",
+    eye: "#fff06e",
+    auraMid: "211, 156, 255",
+    auraEdge: "112, 221, 255",
+    spots: ["#fff0b8", "#e2c0ff", "#a8f2ff", "#ffd1ef", "#d39cff"],
+  },
+];
+
+const dragonPalette = dragonColorThemes[Math.floor(Math.random() * dragonColorThemes.length)];
+
+const dragonForms = {
+  hatchling: {
+    tailLength: 92,
+    tailHeight: 13,
+    bodyX: 47,
+    bodyY: 36,
+    bellyX: 29,
+    bellyY: 18,
+    neckX: 56,
+    neckY: 22,
+    neckCx: 52,
+    headX: 25,
+    headY: 23,
+    headCx: 76,
+    wingScale: 0.48,
+    wingAlpha: 0.72,
+    hornScale: 0.25,
+    crystalScale: 0.36,
+    crystalCount: 3,
+    legScale: 0.58,
+    spotScale: 0.82,
+    cheekFin: 0,
+    tailFin: 0.35,
+    whisker: false,
+    crown: false,
+    aura: 0.75,
+  },
+  young: {
+    tailLength: 128,
+    tailHeight: 17,
+    bodyX: 57,
+    bodyY: 39,
+    bellyX: 35,
+    bellyY: 19,
+    neckX: 67,
+    neckY: 26,
+    neckCx: 64,
+    headX: 28,
+    headY: 22,
+    headCx: 90,
+    wingScale: 0.84,
+    wingAlpha: 0.82,
+    hornScale: 0.58,
+    crystalScale: 0.7,
+    crystalCount: 5,
+    legScale: 0.82,
+    spotScale: 1,
+    cheekFin: 0.55,
+    tailFin: 0.66,
+    whisker: false,
+    crown: false,
+    aura: 0.95,
+  },
+  adult: {
+    tailLength: 166,
+    tailHeight: 22,
+    bodyX: 66,
+    bodyY: 42,
+    bellyX: 40,
+    bellyY: 19,
+    neckX: 74,
+    neckY: 29,
+    neckCx: 72,
+    headX: 29,
+    headY: 23,
+    headCx: 96,
+    wingScale: 1.18,
+    wingAlpha: 0.9,
+    hornScale: 1,
+    crystalScale: 1,
+    crystalCount: 6,
+    legScale: 1,
+    spotScale: 1.1,
+    cheekFin: 0.9,
+    tailFin: 0.95,
+    whisker: true,
+    crown: false,
+    aura: 1.18,
+  },
+  ancient: {
+    tailLength: 205,
+    tailHeight: 26,
+    bodyX: 75,
+    bodyY: 46,
+    bellyX: 45,
+    bellyY: 21,
+    neckX: 82,
+    neckY: 32,
+    neckCx: 80,
+    headX: 32,
+    headY: 25,
+    headCx: 104,
+    wingScale: 1.42,
+    wingAlpha: 0.96,
+    hornScale: 1.34,
+    crystalScale: 1.32,
+    crystalCount: 8,
+    legScale: 1.16,
+    spotScale: 1.22,
+    cheekFin: 1.12,
+    tailFin: 1.25,
+    whisker: true,
+    crown: true,
+    aura: 1.5,
+  },
 };
 
 const stages = [
@@ -117,7 +306,7 @@ const stages = [
   },
   {
     id: "hatchling",
-    name: "오팔 새끼 드래곤",
+    name: "희귀 새끼 드래곤",
     at: 16,
     next: 44,
     scale: 0.72,
@@ -129,7 +318,7 @@ const stages = [
   },
   {
     id: "young",
-    name: "오팔 어린 드래곤",
+    name: "희귀 어린 드래곤",
     at: 44,
     next: 86,
     scale: 1.05,
@@ -141,7 +330,7 @@ const stages = [
   },
   {
     id: "adult",
-    name: "오팔 청년 드래곤",
+    name: "희귀 청년 드래곤",
     at: 86,
     next: 145,
     scale: 1.38,
@@ -153,7 +342,7 @@ const stages = [
   },
   {
     id: "ancient",
-    name: "고대 오팔 드래곤",
+    name: "고대 희귀 드래곤",
     at: 145,
     next: Infinity,
     scale: 1.75,
@@ -407,6 +596,10 @@ function getStageForAge(age) {
 
 function hasSkill(id) {
   return getStage().skills.includes(id);
+}
+
+function getDragonForm(stage = getStage()) {
+  return dragonForms[stage.id] || dragonForms.adult;
 }
 
 function resizeCanvas() {
@@ -694,7 +887,7 @@ function unlockStageIfNeeded() {
   addParticles(dragon.x, dragon.y, 48, stage.id === "hatchling" ? "#ffd979" : "#ff7b4f", 210, 7);
 
   if (previous.id === "egg" && stage.id === "hatchling") {
-    addLog("희귀 탄생", "오팔빛 비늘을 가진 새끼 드래곤이 태어났어요.");
+    addLog("희귀 탄생", `${dragonPalette.name}빛 비늘을 가진 새끼 드래곤이 태어났어요.`);
     addFloatingText(dragon.x, dragon.y - 45, "태어남", "#ffd979");
     return;
   }
@@ -1609,7 +1802,8 @@ function drawPlayer() {
 
 function drawDragon() {
   const stage = getStage();
-  if (!isVisible(dragon.x, dragon.y, 180 * stage.scale)) return;
+  const form = getDragonForm(stage);
+  if (!isVisible(dragon.x, dragon.y, 210 * stage.scale * form.aura)) return;
 
   if (stage.id === "egg") {
     drawEgg();
@@ -1622,83 +1816,76 @@ function drawDragon() {
 
   ctx.save();
   ctx.translate(dragon.x, dragon.y - lift);
-  const aura = ctx.createRadialGradient(0, 0, 8, 0, 0, 120 * scale);
-  aura.addColorStop(0, "rgba(255, 255, 255, 0.16)");
-  aura.addColorStop(0.55, "rgba(126, 231, 244, 0.1)");
-  aura.addColorStop(1, "rgba(184, 151, 255, 0)");
+  const aura = ctx.createRadialGradient(0, 0, 8, 0, 0, 120 * scale * form.aura);
+  aura.addColorStop(0, `rgba(255, 255, 255, ${0.12 + form.aura * 0.04})`);
+  aura.addColorStop(0.55, `rgba(${dragonPalette.auraMid}, ${0.07 + form.aura * 0.04})`);
+  aura.addColorStop(1, `rgba(${dragonPalette.auraEdge}, 0)`);
   ctx.fillStyle = aura;
   ctx.beginPath();
-  ctx.arc(0, 0, 120 * scale, 0, Math.PI * 2);
+  ctx.arc(0, 0, 120 * scale * form.aura, 0, Math.PI * 2);
   ctx.fill();
   ctx.rotate(dragon.facing);
   ctx.scale(scale, scale);
 
-  drawWing(-1, flap);
-  drawWing(1, -flap);
+  drawWing(-1, flap, form);
+  drawWing(1, -flap, form);
 
   ctx.strokeStyle = dragonPalette.outline;
   ctx.lineWidth = 3;
 
-  const tailGrad = ctx.createLinearGradient(-152, -18, -48, 18);
-  tailGrad.addColorStop(0, "rgba(185, 151, 255, 0.82)");
-  tailGrad.addColorStop(0.5, dragonPalette.bodyMid);
-  tailGrad.addColorStop(1, dragonPalette.bodyDeep);
-  ctx.fillStyle = tailGrad;
-  ctx.beginPath();
-  ctx.moveTo(-52, 0);
-  ctx.bezierCurveTo(-96, -24, -126, -20, -166, -2);
-  ctx.bezierCurveTo(-133, 10, -96, 24, -50, 16);
-  ctx.closePath();
-  ctx.fill();
-  ctx.stroke();
+  drawTail(form);
 
-  const bodyGrad = ctx.createLinearGradient(-36, -34, 44, 36);
+  const bodyGrad = ctx.createLinearGradient(-form.bodyX * 0.55, -form.bodyY * 0.82, form.bodyX * 0.66, form.bodyY * 0.86);
   bodyGrad.addColorStop(0, dragonPalette.bodyLight);
   bodyGrad.addColorStop(0.36, dragonPalette.bodyMid);
   bodyGrad.addColorStop(0.72, dragonPalette.bodyDeep);
-  bodyGrad.addColorStop(1, "#7d77d9");
+  bodyGrad.addColorStop(1, dragonPalette.bodyShadow);
   ctx.fillStyle = bodyGrad;
   ctx.beginPath();
-  ctx.ellipse(0, 0, 66, 42, 0, 0, Math.PI * 2);
+  ctx.ellipse(0, 0, form.bodyX, form.bodyY, 0, 0, Math.PI * 2);
   ctx.fill();
   ctx.stroke();
 
-  drawOpalSpots();
+  drawOpalSpots(form);
 
   ctx.fillStyle = dragonPalette.belly;
   ctx.beginPath();
-  ctx.ellipse(7, 9, 40, 19, 0, 0, Math.PI * 2);
+  ctx.ellipse(7, 9, form.bellyX, form.bellyY, 0, 0, Math.PI * 2);
   ctx.fill();
 
-  const neckGrad = ctx.createLinearGradient(44, -24, 96, 24);
+  const neckGrad = ctx.createLinearGradient(form.neckCx - 24, -24, form.headCx + 14, 24);
   neckGrad.addColorStop(0, dragonPalette.bodyDeep);
   neckGrad.addColorStop(1, dragonPalette.bodyMid);
   ctx.fillStyle = neckGrad;
   ctx.beginPath();
-  ctx.ellipse(72, 0, 37, 29, 0, 0, Math.PI * 2);
+  ctx.ellipse(form.neckCx, 0, form.neckX * 0.5, form.neckY, 0, 0, Math.PI * 2);
   ctx.fill();
   ctx.stroke();
 
   ctx.fillStyle = dragonPalette.bodyLight;
   ctx.beginPath();
-  ctx.ellipse(94, 0, 27, 22, 0, 0, Math.PI * 2);
+  ctx.ellipse(form.headCx, 0, form.headX, form.headY, 0, 0, Math.PI * 2);
   ctx.fill();
   ctx.stroke();
 
-  ctx.fillStyle = "#ffe48d";
+  drawCheekFins(form);
+
+  ctx.fillStyle = dragonPalette.eye;
   ctx.beginPath();
-  ctx.arc(102, -8, 5, 0, Math.PI * 2);
-  ctx.arc(102, 8, 5, 0, Math.PI * 2);
+  ctx.arc(form.headCx + form.headX * 0.3, -form.headY * 0.36, 4.2 + form.headX * 0.04, 0, Math.PI * 2);
+  ctx.arc(form.headCx + form.headX * 0.3, form.headY * 0.36, 4.2 + form.headX * 0.04, 0, Math.PI * 2);
   ctx.fill();
   ctx.fillStyle = "#31224b";
   ctx.beginPath();
-  ctx.arc(104, -8, 2, 0, Math.PI * 2);
-  ctx.arc(104, 8, 2, 0, Math.PI * 2);
+  ctx.arc(form.headCx + form.headX * 0.36, -form.headY * 0.36, 2, 0, Math.PI * 2);
+  ctx.arc(form.headCx + form.headX * 0.36, form.headY * 0.36, 2, 0, Math.PI * 2);
   ctx.fill();
 
-  drawSpineCrystals();
-  drawHorns();
-  drawLegs();
+  drawWhiskers(form);
+  drawSpineCrystals(form);
+  drawHorns(form);
+  drawLegs(form);
+  drawCrown(form);
 
   if (state.mounted) drawRider(scale);
 
@@ -1716,10 +1903,44 @@ function drawDragon() {
   }
 }
 
-function drawWing(side, flap) {
+function drawTail(form) {
+  const tailEnd = -form.tailLength;
+  const baseX = -form.bodyX * 0.76;
+  const tailGrad = ctx.createLinearGradient(tailEnd, -form.tailHeight, baseX, form.tailHeight);
+  tailGrad.addColorStop(0, dragonPalette.tailTip);
+  tailGrad.addColorStop(0.5, dragonPalette.bodyMid);
+  tailGrad.addColorStop(1, dragonPalette.bodyDeep);
+  ctx.fillStyle = tailGrad;
+  ctx.beginPath();
+  ctx.moveTo(baseX, -form.tailHeight * 0.34);
+  ctx.bezierCurveTo(-form.tailLength * 0.56, -form.tailHeight * 1.25, -form.tailLength * 0.76, -form.tailHeight * 1.05, tailEnd, -form.tailHeight * 0.12);
+  ctx.bezierCurveTo(-form.tailLength * 0.78, form.tailHeight * 0.68, -form.tailLength * 0.56, form.tailHeight * 1.28, baseX, form.tailHeight * 0.78);
+  ctx.closePath();
+  ctx.fill();
+  ctx.stroke();
+
+  if (form.tailFin > 0) {
+    ctx.fillStyle = dragonPalette.wingA.replace(/0\.\d+\)/, `${0.44 + form.tailFin * 0.2})`);
+    ctx.beginPath();
+    ctx.moveTo(tailEnd + 8, -form.tailHeight * 0.18);
+    ctx.lineTo(tailEnd - 20 * form.tailFin, -34 * form.tailFin);
+    ctx.lineTo(tailEnd + 20 * form.tailFin, -8 * form.tailFin);
+    ctx.closePath();
+    ctx.moveTo(tailEnd + 8, form.tailHeight * 0.14);
+    ctx.lineTo(tailEnd - 18 * form.tailFin, 34 * form.tailFin);
+    ctx.lineTo(tailEnd + 22 * form.tailFin, 9 * form.tailFin);
+    ctx.closePath();
+    ctx.fill();
+    ctx.stroke();
+  }
+}
+
+function drawWing(side, flap, form) {
   ctx.save();
   ctx.scale(1, side);
   ctx.rotate(flap * side);
+  ctx.scale(form.wingScale, form.wingScale);
+  ctx.globalAlpha = form.wingAlpha;
   const wingGrad = ctx.createLinearGradient(-66, -88, 54, -30);
   wingGrad.addColorStop(0, dragonPalette.wingB);
   wingGrad.addColorStop(0.52, dragonPalette.wingA);
@@ -1748,62 +1969,105 @@ function drawWing(side, flap) {
   ctx.restore();
 }
 
-function drawOpalSpots() {
+function drawOpalSpots(form) {
   const spots = [
-    [-32, -13, 9, "#fff7bd"],
-    [-4, -22, 7, "#bffcff"],
-    [28, -12, 8, "#d8c8ff"],
-    [34, 17, 6, "#fff7bd"],
-    [-25, 19, 5, "#bffcff"],
+    [-32, -13, 9, dragonPalette.spots[0]],
+    [-4, -22, 7, dragonPalette.spots[1]],
+    [28, -12, 8, dragonPalette.spots[2]],
+    [34, 17, 6, dragonPalette.spots[3]],
+    [-25, 19, 5, dragonPalette.spots[4]],
   ];
   ctx.save();
   spots.forEach(([x, y, r, color]) => {
     ctx.fillStyle = color;
     ctx.globalAlpha = 0.38 + Math.sin(state.elapsed * 2.8 + x) * 0.08;
     ctx.beginPath();
-    ctx.ellipse(x, y, r, r * 0.62, 0.2, 0, Math.PI * 2);
+    ctx.ellipse(x, y, r * form.spotScale, r * 0.62 * form.spotScale, 0.2, 0, Math.PI * 2);
     ctx.fill();
   });
   ctx.restore();
 }
 
-function drawSpineCrystals() {
+function drawCheekFins(form) {
+  if (form.cheekFin <= 0) return;
+  ctx.save();
+  ctx.fillStyle = `rgba(128, 231, 244, ${0.58 + form.cheekFin * 0.18})`;
+  ctx.strokeStyle = dragonPalette.outline;
+  ctx.lineWidth = 2;
+  const x = form.headCx - form.headX * 0.2;
+  const fin = 18 * form.cheekFin;
+  ctx.beginPath();
+  ctx.moveTo(x, -form.headY * 0.75);
+  ctx.lineTo(x - fin * 0.32, -form.headY - fin);
+  ctx.lineTo(x + fin * 0.85, -form.headY * 0.48);
+  ctx.closePath();
+  ctx.moveTo(x, form.headY * 0.75);
+  ctx.lineTo(x - fin * 0.32, form.headY + fin);
+  ctx.lineTo(x + fin * 0.85, form.headY * 0.48);
+  ctx.closePath();
+  ctx.fill();
+  ctx.stroke();
+  ctx.restore();
+}
+
+function drawWhiskers(form) {
+  if (!form.whisker) return;
+  ctx.save();
+  ctx.strokeStyle = "rgba(255, 247, 189, 0.82)";
+  ctx.lineWidth = form.crown ? 2.4 : 1.8;
+  const x = form.headCx + form.headX * 0.76;
+  ctx.beginPath();
+  ctx.moveTo(x, -7);
+  ctx.bezierCurveTo(x + 22, -22, x + 42, -19, x + 60, -32);
+  ctx.moveTo(x, 7);
+  ctx.bezierCurveTo(x + 22, 22, x + 42, 19, x + 60, 32);
+  ctx.stroke();
+  ctx.restore();
+}
+
+function drawSpineCrystals(form) {
   ctx.fillStyle = dragonPalette.crystal;
   ctx.strokeStyle = "rgba(255, 255, 255, 0.68)";
   ctx.lineWidth = 1.5;
   [
-    [-46, -3, 12],
-    [-25, -15, 15],
-    [-2, -24, 17],
-    [22, -23, 14],
-    [58, -16, 12],
-    [84, -13, 10],
-  ].forEach(([x, y, h]) => {
+    [-58, -1, 10],
+    [-42, -11, 12],
+    [-23, -18, 15],
+    [-2, -25, 17],
+    [22, -25, 16],
+    [50, -20, 14],
+    [76, -16, 12],
+    [100, -13, 10],
+  ].slice(0, form.crystalCount).forEach(([x, y, h]) => {
+    const height = h * form.crystalScale;
     ctx.beginPath();
     ctx.moveTo(x, y);
-    ctx.lineTo(x + h * 0.45, y - h);
-    ctx.lineTo(x + h * 0.92, y + 1);
+    ctx.lineTo(x + height * 0.45, y - height);
+    ctx.lineTo(x + height * 0.92, y + 1);
     ctx.closePath();
     ctx.fill();
     ctx.stroke();
   });
 }
 
-function drawHorns() {
+function drawHorns(form) {
+  if (form.hornScale <= 0) return;
+  const x = form.headCx - form.headX * 0.25;
+  const h = 24 * form.hornScale;
   ctx.fillStyle = dragonPalette.horn;
   ctx.beginPath();
-  ctx.moveTo(86, -18);
-  ctx.lineTo(72, -48);
-  ctx.lineTo(105, -24);
+  ctx.moveTo(x, -form.headY * 0.72);
+  ctx.lineTo(x - h * 0.5, -form.headY * 0.72 - h);
+  ctx.lineTo(x + h * 0.9, -form.headY * 0.9);
   ctx.closePath();
-  ctx.moveTo(86, 18);
-  ctx.lineTo(72, 48);
-  ctx.lineTo(105, 24);
+  ctx.moveTo(x, form.headY * 0.72);
+  ctx.lineTo(x - h * 0.5, form.headY * 0.72 + h);
+  ctx.lineTo(x + h * 0.9, form.headY * 0.9);
   ctx.closePath();
   ctx.fill();
 }
 
-function drawLegs() {
+function drawLegs(form) {
   ctx.fillStyle = "#8ea7ff";
   [
     [-18, -30, -34, -42],
@@ -1811,14 +2075,34 @@ function drawLegs() {
     [-18, 30, -34, 42],
     [28, 28, 38, 42],
   ].forEach(([x1, y1, x2, y2]) => {
+    const s = form.legScale;
     ctx.beginPath();
-    ctx.moveTo(x1, y1);
-    ctx.lineTo(x2, y2);
-    ctx.lineTo(x2 + 18, y2 + Math.sign(y2) * 2);
-    ctx.lineTo(x1 + 12, y1);
+    ctx.moveTo(x1 * s, y1 * s);
+    ctx.lineTo(x2 * s, y2 * s);
+    ctx.lineTo((x2 + 18) * s, (y2 + Math.sign(y2) * 2) * s);
+    ctx.lineTo((x1 + 12) * s, y1 * s);
     ctx.closePath();
     ctx.fill();
   });
+}
+
+function drawCrown(form) {
+  if (!form.crown) return;
+  ctx.save();
+  ctx.fillStyle = "rgba(255, 242, 169, 0.92)";
+  ctx.strokeStyle = "rgba(96, 121, 183, 0.75)";
+  ctx.lineWidth = 2;
+  const x = form.headCx - 8;
+  ctx.beginPath();
+  ctx.moveTo(x - 14, -form.headY - 3);
+  ctx.lineTo(x - 5, -form.headY - 26);
+  ctx.lineTo(x + 4, -form.headY - 7);
+  ctx.lineTo(x + 15, -form.headY - 32);
+  ctx.lineTo(x + 23, -form.headY - 6);
+  ctx.closePath();
+  ctx.fill();
+  ctx.stroke();
+  ctx.restore();
 }
 
 function drawRider() {
@@ -1855,9 +2139,9 @@ function drawEgg() {
 
   const grad = ctx.createLinearGradient(-30, -60, 32, 54);
   grad.addColorStop(0, "#ffffff");
-  grad.addColorStop(0.35, "#d9fbff");
-  grad.addColorStop(0.68, "#e2d6ff");
-  grad.addColorStop(1, "#91e6d2");
+  grad.addColorStop(0.35, dragonPalette.bodyLight);
+  grad.addColorStop(0.68, dragonPalette.bodyMid);
+  grad.addColorStop(1, dragonPalette.bodyDeep);
   ctx.fillStyle = grad;
   ctx.beginPath();
   ctx.ellipse(0, 0, 42, 58, 0, 0, Math.PI * 2);
@@ -1871,14 +2155,16 @@ function drawEgg() {
   ctx.ellipse(-13, -19, 10, 21, -0.4, 0, Math.PI * 2);
   ctx.fill();
 
-  ctx.fillStyle = "rgba(255, 242, 169, 0.45)";
+  ctx.fillStyle = dragonPalette.spots[0];
+  ctx.globalAlpha = 0.45;
   ctx.beginPath();
   ctx.ellipse(16, 14, 11, 7, 0.45, 0, Math.PI * 2);
   ctx.ellipse(-18, 22, 7, 5, -0.2, 0, Math.PI * 2);
   ctx.fill();
+  ctx.globalAlpha = 1;
 
   if (progress > 0.36) {
-    ctx.strokeStyle = "#6a7fc5";
+    ctx.strokeStyle = dragonPalette.outline;
     ctx.lineWidth = 3;
     ctx.beginPath();
     ctx.moveTo(-7, -42);
@@ -1889,7 +2175,7 @@ function drawEgg() {
   }
 
   if (progress > 0.72) {
-    ctx.strokeStyle = "#bffcff";
+    ctx.strokeStyle = dragonPalette.crystal;
     ctx.lineWidth = 5;
     ctx.globalAlpha = 0.65 + Math.sin(state.elapsed * 10) * 0.2;
     ctx.beginPath();
@@ -2248,6 +2534,6 @@ resizeCanvas();
 createWorld();
 centerCameraOn(player);
 bindEvents();
-addLog("시작", "초원 중앙의 알에서 작은 열기가 느껴져요.");
+addLog("시작", `${dragonPalette.name}빛 알에서 작은 열기가 느껴져요.`);
 updateUi();
 requestAnimationFrame(loop);
