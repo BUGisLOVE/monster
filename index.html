@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>드래곤 초원</title>
+    <link rel="stylesheet" href="./styles.css?v=20260517-drag2" />
+  </head>
+  <body>
+    <main class="game-shell" aria-label="드래곤 초원 게임">
+      <canvas id="worldCanvas" aria-label="넓은 들판 지도"></canvas>
+
+      <section class="hud hud-top" aria-label="드래곤 상태">
+        <article class="brand-panel panel">
+          <p>Dragon Meadow</p>
+          <h1>드래곤 초원</h1>
+        </article>
+
+        <article class="status-panel panel">
+          <div class="status-head">
+            <strong id="stageText">알</strong>
+            <span id="modeText">보살핌</span>
+          </div>
+          <div class="meter-row">
+            <span>성장</span>
+            <div class="meter"><i id="growthMeter"></i></div>
+            <b id="growthText">0%</b>
+          </div>
+          <div class="meter-row">
+            <span>체력</span>
+            <div class="meter hp"><i id="healthMeter"></i></div>
+            <b id="healthText">100</b>
+          </div>
+          <div class="meter-row">
+            <span>기력</span>
+            <div class="meter stamina"><i id="staminaMeter"></i></div>
+            <b id="staminaText">100</b>
+          </div>
+        </article>
+
+        <article class="mini-panel panel" aria-label="초원 정보">
+          <div>
+            <span>정수</span>
+            <strong id="essenceText">0</strong>
+          </div>
+          <div>
+            <span>몬스터</span>
+            <strong id="monsterText">0</strong>
+          </div>
+        </article>
+      </section>
+
+      <section class="hud side-panel panel" aria-label="기록">
+        <h2>기록</h2>
+        <div id="logList" class="log-list"></div>
+      </section>
+
+      <section class="hud action-bar panel" aria-label="행동">
+        <button id="careButton" class="action-button primary" type="button">
+          <span class="action-icon">✦</span>
+          <span>보살피기</span>
+        </button>
+        <button id="mountButton" class="action-button" type="button">
+          <span class="action-icon">◆</span>
+          <span>탑승</span>
+        </button>
+        <button id="flyButton" class="action-button" type="button">
+          <span class="action-icon">⌃</span>
+          <span>비행</span>
+        </button>
+        <button id="emberButton" class="action-button skill" type="button">
+          <span class="action-icon">◇</span>
+          <span>불씨</span>
+        </button>
+        <button id="gustButton" class="action-button skill" type="button">
+          <span class="action-icon">◌</span>
+          <span>날개바람</span>
+        </button>
+        <button id="fireballButton" class="action-button skill" type="button">
+          <span class="action-icon">●</span>
+          <span>화염구</span>
+        </button>
+        <button id="roarButton" class="action-button skill" type="button">
+          <span class="action-icon">▣</span>
+          <span>포효</span>
+        </button>
+      </section>
+    </main>
+
+    <script src="./game.js?v=20260517-drag2"></script>
+  </body>
+</html>
